@@ -1,0 +1,30 @@
+.header__button {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: right;
+    color: #FFF;
+    text-decoration: none;
+    margin: auto;
+    border: none;
+    background: transparent;
+    transition: opacity .5s, transform .5s;
+    padding: 0;
+}
+
+.header__button:hover {
+    opacity: .6;
+    cursor: pointer;
+    transform: scale(1.040);
+}
+
+@media(max-width: 440px) {
+    .header__button {
+        margin-right: 30px;
+        font-size: 14px;
+        line-height: 17px;
+        margin-top: 6px;
+    }
+}

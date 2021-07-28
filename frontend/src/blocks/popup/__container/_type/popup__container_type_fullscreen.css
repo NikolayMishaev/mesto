@@ -1,0 +1,15 @@
+.popup__container_type_fullscreen {
+  position: relative;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  border-radius: 10px;
+  box-sizing: border-box;
+  object-fit: contain;
+  padding: unset;
+  min-width: unset;
+  min-height: unset;
+  background-color: unset;
+}

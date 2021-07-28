@@ -1,0 +1,13 @@
+.entry__button-submit_disabled {
+    background: grey;
+    border: 1px solid white;
+    border-radius: 2px;
+    color: darkgrey;
+    opacity: .4;
+}
+
+.entry__button-submit_disabled:hover {
+    transform: none;
+    cursor: auto;
+    opacity: .4;
+  }

@@ -1,0 +1,10 @@
+@media screen and (max-width: 768px) {
+    .header__menu_type_sign-in {
+        display: block;
+        background: url(../../../../images/header-menu.png) no-repeat center 3px;
+        width: 24px;
+        height: 24px;
+        margin-left: auto;
+        margin-right: 30px;
+    }
+}

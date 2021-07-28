@@ -1,0 +1,5 @@
+.popup__container_type_info-tool-tip {
+    display: flex;
+    flex-direction: column;
+    min-height: unset;
+}

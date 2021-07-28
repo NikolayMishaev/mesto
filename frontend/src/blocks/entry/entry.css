@@ -1,0 +1,15 @@
+.entry {
+    width: 100%;
+    max-width: 940px;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    flex-grow: 1;
+    max-width: 358px;
+}
+
+@media(max-width: 440px) {
+    .entry {
+        max-width: 100%;
+        padding: 0 30px;
+    }
+}

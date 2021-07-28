@@ -1,0 +1,16 @@
+.header__wrapper-user-email {
+    max-width: 450px;
+    overflow: auto;
+    margin: auto 24px auto 0;
+}
+
+.header__wrapper-user-email::-webkit-scrollbar {
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+    .header__wrapper-user-email {
+        max-width: unset;
+        margin: auto 18px;
+    }
+}

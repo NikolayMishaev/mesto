@@ -1,0 +1,25 @@
+.entry__input {
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid #CCC;
+    padding-bottom: 13px;
+    box-sizing: border-box;
+    font-family: Inter;
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 17px;
+color: #FFF;
+padding-left: 0px;
+padding-bottom: 7px;
+}
+
+.entry__input::placeholder {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    color: #CCC;
+}

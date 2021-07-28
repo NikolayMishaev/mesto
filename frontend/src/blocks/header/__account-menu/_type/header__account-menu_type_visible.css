@@ -1,0 +1,12 @@
+.header__account-menu_type_visible {
+    opacity: 1;
+    visibility: visible;
+    height: unset;
+}
+
+@media screen and (max-width: 768px) {
+    .header__account-menu_type_visible {
+        height: 131px;
+        padding-top: 10px;
+    }
+}

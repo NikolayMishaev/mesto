@@ -1,0 +1,8 @@
+@media(max-width: 570px) {
+    .popup__close_type_info-tool-tip {
+        width: 30px;
+        height: 30px;
+        right: 45%;
+        top: -57px;
+    }
+}
