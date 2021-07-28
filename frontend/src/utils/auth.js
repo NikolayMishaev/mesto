@@ -1,4 +1,4 @@
-const BASE_URL = "https://auth.nomoreparties.co";
+const BASE_URL = "http://api.mestorussia.nikolaym.nomoredomains.club";
 
 const headers = {
   "Content-Type": "application/json",
