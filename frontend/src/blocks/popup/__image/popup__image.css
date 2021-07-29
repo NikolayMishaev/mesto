@@ -1,0 +1,12 @@
+.popup__image {
+    width: 120px;
+    height: 120px;
+    margin: 60px auto 0;
+    order: 1;
+}
+
+@media(max-width: 570px) {
+    .popup__image {
+        margin-top: 50px;
+    }
+}

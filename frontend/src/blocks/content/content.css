@@ -1,0 +1,7 @@
+.content {
+  width: 100%;
+  max-width: 940px;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  flex-grow: 1;
+}

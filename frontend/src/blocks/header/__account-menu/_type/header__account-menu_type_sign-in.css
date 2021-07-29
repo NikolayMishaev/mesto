@@ -1,0 +1,20 @@
+@media screen and (max-width: 768px) {
+    .header__account-menu_type_sign-in {
+        width: 100%;
+        order: -1;
+        flex-direction: column;
+        opacity: 0;
+        visibility: hidden;
+        height: 0;
+        transition: visibility .5s, opacity .5s, height .5s, padding-top .5s;
+    }
+
+    .header__account-menu_type_sign-in::after {
+        content: '';
+        border-bottom: 1px solid rgba(84, 84, 84, 0.7);
+        display: block;
+        width: 100%;
+        margin-top: 40px;
+        margin-bottom: 28px;
+    }
+}

@@ -1,0 +1,25 @@
+.popup__container {
+  position: fixed;
+  left: 50%;
+  top:50%;
+  transform: translate(-50%, -50%);
+  min-width: 430px;
+  min-height: 330px;
+  background-color: #fff;
+  z-index: 2;
+  border-radius: 10px;
+  padding: 0 36px 0;
+  box-sizing: border-box;
+}
+
+.popup__container:hover {
+  cursor: auto;
+}
+
+@media screen and (max-width: 570px) {
+  .popup__container {
+    min-width: 282px;
+    min-height: 322px;
+    padding: 0 22px 0;
+  }
+}

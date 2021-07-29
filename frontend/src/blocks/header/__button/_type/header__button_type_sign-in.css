@@ -1,0 +1,12 @@
+@media(max-width: 768px) {
+    .header__button_type_sign-in {
+        margin: auto;
+    }
+}
+
+@media(max-width: 440px) {
+    .header__button_type_sign-in {
+        font-size: 18px;
+        line-height: 22px;
+    }
+}
