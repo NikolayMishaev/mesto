@@ -2,7 +2,6 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const { celebrate, Joi, errors } = require('celebrate');
-const cookieParser = require('cookie-parser');
 const { SETUP_MONGO, URL_MONGO } = require('./utils/constants');
 const { login, createUser } = require('./controllers/users');
 const auth = require('./middlewares/auth');
@@ -44,7 +43,6 @@ app.post('/signup', celebrate({
   }),
 }), createUser);
 
-app.use(cookieParser());
 app.use(auth);
 
 app.use('/cards', require('./routes/cards'));

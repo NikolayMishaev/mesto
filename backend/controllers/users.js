@@ -33,8 +33,7 @@ const login = async (req, res, next) => {
       throw new UnauthorizedError('Неправильные почта или пароль');
     }
     const token = jwt.sign({ _id: user._id }, 'protected-key', { expiresIn: '7d' });
-    res.cookie('jwt', token);
-    res.send({ message: 'токен сохранен в cookie' });
+    res.send({ token });
   } catch (err) {
     next(err);
   }
