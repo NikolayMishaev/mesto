@@ -1,7 +1,6 @@
 class Api {
-  constructor({ baseUrl, headers }) {
+  constructor({ baseUrl }) {
     this._baseUrl = baseUrl;
-    this._headers = headers;
   }
 
   _checkStatus(res) {
@@ -11,59 +10,80 @@ class Api {
     return Promise.reject(`Ошибка: ${res.status} ${res.statusText}`);
   }
 
-  getUserInfo() {
+  getUserInfo(token) {
     return fetch(`${this._baseUrl}/users/me`, {
-      headers: this._headers,
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `Bearer ${token}`
+      },
     }).then((res) => {
       return this._checkStatus(res);
     });
   }
-  getInitialCards() {
+  getInitialCards(token) {
     return fetch(`${this._baseUrl}/cards`, {
-      headers: this._headers,
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `Bearer ${token}`
+      },
     }).then((res) => {
       return this._checkStatus(res);
     });
   }
-  updateDataUser(data) {
+  updateDataUser(data, token) {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",
-      headers: this._headers,
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `Bearer ${token}`
+      },
       body: JSON.stringify(data),
     }).then((res) => {
       return this._checkStatus(res);
     });
   }
-  addNewCard(data) {
+  addNewCard(data, token) {
     return fetch(`${this._baseUrl}/cards`, {
       method: "POST",
-      headers: this._headers,
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `Bearer ${token}`
+      },
       body: JSON.stringify(data),
     }).then((res) => {
       return this._checkStatus(res);
     });
   }
-  deleteCard(id) {
+  deleteCard(id, token) {
     return fetch(`${this._baseUrl}/cards/${id}`, {
       method: "DELETE",
-      headers: this._headers,
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `Bearer ${token}`
+      },
     }).then((res) => {
       return this._checkStatus(res);
     });
   }
-  updateUserAvatar(data) {
+  updateUserAvatar(data, token) {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
-      headers: this._headers,
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `Bearer ${token}`
+      },
       body: JSON.stringify(data),
     }).then((res) => {
       return this._checkStatus(res);
     });
   }
-  likeCard(method, id) {
+  likeCard(method, id, token) {
     return fetch(`${this._baseUrl}/cards/likes/${id}`, {
       method: method,
-      headers: this._headers,
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `Bearer ${token}`
+      },
     }).then((res) => {
       return this._checkStatus(res);
     });
@@ -71,11 +91,7 @@ class Api {
 }
 
 const api = new Api({
-  baseUrl: "https://mesto.nomoreparties.co/v1/cohort-23",
-  headers: {
-    authorization: "96364424-6290-422a-9d50-b20388f62f83",
-    "Content-Type": "application/json",
-  },
+  baseUrl: "http://mestorussia.nikolaym.nomoredomains.club",
 });
 
 export default api;

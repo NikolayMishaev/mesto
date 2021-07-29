@@ -1,7 +1,7 @@
 const allowedCors = [
   'http://mestorussia.nikolaym.nomoredomains.club',
   'http://api.mestorussia.nikolaym.nomoredomains.club',
-  'localhost:3000',
+  'http://localhost:3000',
 ];
 
 module.exports = ((req, res, next) => {

@@ -75,8 +75,9 @@ export default function App() {
   }, [loggedIn, history]);
 
   useEffect(() => {
+    const jwt = localStorage.getItem("jwt");
     api
-      .getUserInfo()
+      .getUserInfo(jwt)
       .then((data) => {
         setCurrentUser(data);
       })
@@ -86,8 +87,9 @@ export default function App() {
   }, []);
 
   useEffect(() => {
+    const jwt = localStorage.getItem("jwt");
     api
-      .getInitialCards()
+      .getInitialCards(jwt)
       .then((data) => {
         setCards(data);
       })
@@ -142,9 +144,10 @@ export default function App() {
   }
 
   function handleCardLike(card) {
+    const jwt = localStorage.getItem("jwt");
     const isLiked = card.likes.some((i) => i._id === currentUser._id);
     api
-      .likeCard(isLiked ? "DELETE" : "PUT", card._id)
+      .likeCard(isLiked ? "DELETE" : "PUT", card._id, jwt)
       .then((newCard) => {
         setCards((state) =>
           state.map((c) => (c._id === card._id ? newCard : c))
@@ -157,8 +160,9 @@ export default function App() {
 
   function handleCardDelete(card) {
     setSendingStatus("Удаление...");
+    const jwt = localStorage.getItem("jwt");
     api
-      .deleteCard(card._id)
+      .deleteCard(card._id, jwt)
       .then(() => {
         setCards((state) => state.filter((i) => i._id !== card._id));
         closeAllPopups();
@@ -172,8 +176,9 @@ export default function App() {
 
   function handleUpdateUser(data) {
     setSendingStatus("Сохранение...");
+    const jwt = localStorage.getItem("jwt");
     api
-      .updateDataUser(data)
+      .updateDataUser(data,jwt)
       .then((data) => {
         setCurrentUser(data);
         closeAllPopups();
@@ -186,8 +191,9 @@ export default function App() {
 
   function handleUpdateAvatar(data) {
     setSendingStatus("Сохранение...");
+    const jwt = localStorage.getItem("jwt");
     api
-      .updateUserAvatar(data)
+      .updateUserAvatar(data,jwt)
       .then((data) => {
         setCurrentUser(data);
         closeAllPopups();
@@ -200,8 +206,9 @@ export default function App() {
 
   function handleAddPlaceSubmit(data) {
     setSendingStatus("Сохранение...");
+    const jwt = localStorage.getItem("jwt");
     api
-      .addNewCard(data)
+      .addNewCard(data, jwt)
       .then((newCard) => {
         setCards([newCard, ...cards]);
         closeAllPopups();
