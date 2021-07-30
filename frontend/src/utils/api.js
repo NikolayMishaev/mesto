@@ -14,7 +14,7 @@ class Api {
     return fetch(`${this._baseUrl}/users/me`, {
       headers: {
         "Content-Type": "application/json",
-        authorization: `Bearer ${token}`
+        'authorization': `Bearer ${token}`
       },
     }).then((res) => {
       return this._checkStatus(res);
@@ -24,7 +24,7 @@ class Api {
     return fetch(`${this._baseUrl}/cards`, {
       headers: {
         "Content-Type": "application/json",
-        authorization: `Bearer ${token}`
+        'authorization': `Bearer ${token}`
       },
     }).then((res) => {
       return this._checkStatus(res);
@@ -35,7 +35,7 @@ class Api {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
-        authorization: `Bearer ${token}`
+        'authorization': `Bearer ${token}`
       },
       body: JSON.stringify(data),
     }).then((res) => {
@@ -47,7 +47,7 @@ class Api {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        authorization: `Bearer ${token}`
+        'authorization': `Bearer ${token}`
       },
       body: JSON.stringify(data),
     }).then((res) => {
@@ -59,7 +59,7 @@ class Api {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
-        authorization: `Bearer ${token}`
+        'authorization': `Bearer ${token}`
       },
     }).then((res) => {
       return this._checkStatus(res);
@@ -70,7 +70,7 @@ class Api {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
-        authorization: `Bearer ${token}`
+        'authorization': `Bearer ${token}`
       },
       body: JSON.stringify(data),
     }).then((res) => {
@@ -78,11 +78,11 @@ class Api {
     });
   }
   likeCard(method, id, token) {
-    return fetch(`${this._baseUrl}/cards/likes/${id}`, {
+    return fetch(`${this._baseUrl}/cards/${id}/likes`, {
       method: method,
       headers: {
         "Content-Type": "application/json",
-        authorization: `Bearer ${token}`
+        'authorization': `Bearer ${token}`
       },
     }).then((res) => {
       return this._checkStatus(res);
@@ -91,7 +91,7 @@ class Api {
 }
 
 const api = new Api({
-  baseUrl: "http://mestorussia.nikolaym.nomoredomains.club",
+  baseUrl: "http://api.mestorussia.nikolaym.nomoredomains.club",
 });
 
 export default api;

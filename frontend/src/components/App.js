@@ -62,10 +62,26 @@ export default function App() {
       getContent(jwt)
         .then((res) => {
           if (res) {
-            setUserEmail(res.data.email);
+            setUserEmail(res.email);
             setLoggedIn(true);
             history.push("/");
             setHeaderLinkName("Выйти");
+            api
+            .getUserInfo(jwt)
+            .then((data) => {
+              setCurrentUser(data);
+              api
+              .getInitialCards(jwt)
+              .then((data) => {
+                setCards(data);
+              })
+              .catch((err) => {
+                showErrorMessage(err);
+              });
+            })
+            .catch((err) => {
+              showErrorMessage(err);
+            });
           }
         })
         .catch((err) => {
@@ -73,30 +89,6 @@ export default function App() {
         });
     }
   }, [loggedIn, history]);
-
-  useEffect(() => {
-    const jwt = localStorage.getItem("jwt");
-    api
-      .getUserInfo(jwt)
-      .then((data) => {
-        setCurrentUser(data);
-      })
-      .catch((err) => {
-        showErrorMessage(err);
-      });
-  }, []);
-
-  useEffect(() => {
-    const jwt = localStorage.getItem("jwt");
-    api
-      .getInitialCards(jwt)
-      .then((data) => {
-        setCards(data);
-      })
-      .catch((err) => {
-        showErrorMessage(err);
-      });
-  }, []);
 
   useEffect(() => {
     document.addEventListener("keydown", handleEscClose);
@@ -144,8 +136,10 @@ export default function App() {
   }
 
   function handleCardLike(card) {
+    console.log(card)
+    console.log(currentUser._id)
     const jwt = localStorage.getItem("jwt");
-    const isLiked = card.likes.some((i) => i._id === currentUser._id);
+    const isLiked = card.likes.some((i) => i === currentUser._id);
     api
       .likeCard(isLiked ? "DELETE" : "PUT", card._id, jwt)
       .then((newCard) => {
