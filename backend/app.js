@@ -3,24 +3,25 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const { celebrate, Joi, errors } = require('celebrate');
-// const cors = require('cors');
+const cors = require('cors');
 const { SETUP_MONGO, URL_MONGO } = require('./utils/constants');
 const { login, createUser } = require('./controllers/users');
 const auth = require('./middlewares/auth');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-const cors = require('./middlewares/cors');
+// const corsq = require('./middlewares/cors');
 const NotFoundError = require('./errors/NotFoundError');
 
 const { PORT = 3000 } = process.env;
 const app = express();
-
+app.use(cors());
+app.options('*', cors());
 mongoose.connect(URL_MONGO, SETUP_MONGO);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(requestLogger);
-app.use(cors);
+
 
 app.get('/crash-test', () => {
   setTimeout(() => {
