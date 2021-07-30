@@ -34,7 +34,11 @@ const login = async (req, res, next) => {
     if (!matched) {
       throw new UnauthorizedError('Неправильные почта или пароль');
     }
-    const token = jwt.sign({ _id: user._id }, NODE_ENV === 'production' ? JWT_SECRET : 'protected-key', { expiresIn: '7d' });
+    const token = jwt.sign(
+      { _id: user._id },
+      NODE_ENV === 'production' ? JWT_SECRET : 'protected-key',
+      { expiresIn: '7d' },
+    );
     res.send({ token });
   } catch (err) {
     next(err);
@@ -75,7 +79,14 @@ const createUser = async (req, res, next) => {
     });
   } catch (err) {
     if (err.name === 'ValidationError') {
-      next(new BadRequestError(`Переданы некорректные данные при создании пользователя. В поле ${err.message.replace('user validation failed: ', '')}`));
+      next(
+        new BadRequestError(
+          `Переданы некорректные данные при создании пользователя. В поле ${err.message.replace(
+            'user validation failed: ',
+            '',
+          )}`,
+        ),
+      );
     }
     if (err.name === 'MongoError' && err.code === 11000) {
       next(new ConflictError('Пользователь с таким email уже зарегистрирован'));
@@ -118,7 +129,14 @@ const updateUserAvatar = async (req, res, next) => {
     ));
   } catch (err) {
     if (err.name === 'ValidationError') {
-      next(new BadRequestError(`Переданы некорректные данные при обновлении поля ${err.message.replace('Validation failed: ', '')}`));
+      next(
+        new BadRequestError(
+          `Переданы некорректные данные при обновлении поля ${err.message.replace(
+            'Validation failed: ',
+            '',
+          )}`,
+        ),
+      );
     }
     if (err.name === 'CastError') {
       next(new NotFoundError('Пользователь с указанным id не найден'));
