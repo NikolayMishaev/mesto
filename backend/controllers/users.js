@@ -6,6 +6,8 @@ const NotFoundError = require('../errors/NotFoundError');
 const ConflictError = require('../errors/ConflictError');
 const UnauthorizedError = require('../errors/UnauthorizedError');
 
+const { NODE_ENV, JWT_SECRET } = process.env;
+
 const getDataUser = async (req, res, next) => {
   try {
     const user = await User.findById(req.user._id);
@@ -32,7 +34,7 @@ const login = async (req, res, next) => {
     if (!matched) {
       throw new UnauthorizedError('Неправильные почта или пароль');
     }
-    const token = jwt.sign({ _id: user._id }, 'protected-key', { expiresIn: '7d' });
+    const token = jwt.sign({ _id: user._id }, NODE_ENV === 'production' ? JWT_SECRET : 'protected-key', { expiresIn: '7d' });
     res.send({ token });
   } catch (err) {
     next(err);

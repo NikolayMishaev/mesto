@@ -136,8 +136,6 @@ export default function App() {
   }
 
   function handleCardLike(card) {
-    console.log(card)
-    console.log(currentUser._id)
     const jwt = localStorage.getItem("jwt");
     const isLiked = card.likes.some((i) => i === currentUser._id);
     api
@@ -264,6 +262,7 @@ export default function App() {
   function onSignOut() {
     if (headerLinkName === "Выйти") {
       localStorage.removeItem("jwt");
+      setLoggedIn(false);
       setHeaderLinkName("Регистрация");
       setUserEmail("");
       history.push("/sign-in");
