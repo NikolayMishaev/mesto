@@ -91,7 +91,7 @@ class Api {
 }
 
 const api = new Api({
-  baseUrl: "http://api.mestorussia.nikolaym.nomoredomains.club",
+  baseUrl: "https://api.mestorussia.nikolaym.nomoredomains.club",
 });
 
 export default api;
