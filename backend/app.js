@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
+const helmet = require('helmet');
 const bodyParser = require('body-parser');
 const { celebrate, Joi, errors } = require('celebrate');
 const cors = require('cors');
@@ -11,6 +12,7 @@ const auth = require('./middlewares/auth');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const NotFoundError = require('./errors/NotFoundError');
 const BadRequestError = require('./errors/BadRequestError');
+const handleError = require('./errors/handleError');
 
 const { PORT = 3000 } = process.env;
 const app = express();
@@ -19,6 +21,7 @@ mongoose.connect(URL_MONGO, SETUP_MONGO);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(helmet());
 
 const method = (value) => {
   const result = validator.isURL(value);
@@ -67,12 +70,6 @@ app.use(errorLogger);
 
 app.use(errors());
 
-// eslint-disable-next-line no-unused-vars
-app.use((err, req, res, next) => {
-  if (!err.statusCode) {
-    res.status(500).send({ message: 'На сервере произошла ошибка' });
-  }
-  res.status(err.statusCode).send({ message: err.message });
-});
+app.use(handleError);
 
 app.listen(PORT);
