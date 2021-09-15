@@ -18,7 +18,8 @@ const createCard = async (req, res, next) => {
     res.send(await Card.create({ name, link, owner }));
   } catch (err) {
     if (err.name === 'ValidationError') {
-      next(new BadRequestError(`Переданы некорректные данные при создании карточки. В поле ${err.message.replace('card validation failed: ', '')}`));
+      next(new BadRequestError(`Переданы некорректные данные при создании карточки.
+      В поле ${err.message.replace('card validation failed: ', '')}`));
     }
     next(err);
   }

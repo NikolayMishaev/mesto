@@ -27,13 +27,13 @@ export default function Header({ userEmail, headerLinkName, onSignOut }) {
         } ${visibleHeaderMenu ? "header__account-menu_type_visible" : ""}`}
       >
         <div className="header__wrapper-user-email">
-        <p
-          className={` header__user-email ${
-            userEmail ? "header__user-email_type_sign-in" : ""
-          }`}
-        >
-          {userEmail}
-        </p>
+          <p
+            className={` header__user-email ${
+              userEmail ? "header__user-email_type_sign-in" : ""
+            }`}
+          >
+            {userEmail}
+          </p>
         </div>
         <button
           type="button"
