@@ -8,10 +8,10 @@
 - приложение, в котором можно добавлять карточки Мест России и ставить лайки
 
 ## Скриншоты
-![поиск фильмов](https://github.com/NikolayMishaev/mesto/raw/main/src/images/readme/01.jpg)
-![мобильное меню и кнопка управления пагинацией](https://github.com/NikolayMishaev/mesto/raw/main/src/images/readme/02.jpg)
-![регистрация, ЛК](https://github.com/NikolayMishaev/mesto/raw/main/src/images/readme/03.jpg)
-![страница профиля и поиск фильмов](https://github.com/NikolayMishaev/mesto/raw/main/src/images/readme/04.jpg)
+![поиск фильмов](https://github.com/NikolayMishaev/mesto/raw/main/frontend/src/images/readme/01.jpg)
+![мобильное меню и кнопка управления пагинацией](https://github.com/NikolayMishaev/mesto/raw/main/frontend/src/images/readme/02.jpg)
+![регистрация, ЛК](https://github.com/NikolayMishaev/mesto/raw/main/frontend/src/images/readme/03.jpg)
+![страница профиля и поиск фильмов](https://github.com/NikolayMishaev/mesto/raw/main/frontend/src/images/readme/04.jpg)
 
 ## Технологии
 - React
